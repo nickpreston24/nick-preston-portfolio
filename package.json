@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && `npm run buildcss:release`",
     "preview": "vite preview",
     "buildcss:dev": "cross-env TAILWIND_MODE=build postcss ./css/style.css -o ./dist/css/app.css",
     "buildcss:release": "cross-env NODE_ENV=production postcss ./css/style.css -o ./dist/css/app.css"
