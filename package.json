@@ -19,6 +19,7 @@
     "vite": "^2.9.15"
   },
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "alpinejs": "^3.10.5",
     "daisyui": "^2.38.1",
     "htmx.org": "^1.8.4",

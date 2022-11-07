@@ -7,48 +7,161 @@
     <title>Nick Preston</title>
     <script type="module" src="./main.js"></script>
     <script type="module" src="./src/projects.js"></script>
+    <script type="module" src="./src/skillz.js"></script>
   </head>
   <body x-data="setup()">
-    <h1 class="text-3xl font-bold underline text-secondary">
-      Hello, I'm Nick!
-    </h1>
-    <h2 class="text-2xl font-bold underline text-secondary">
-      Your .NET Mechanic
-    </h2>
-
-    <div class="avatar">
-      <div
-        class="w-24 rounded-full lg:w-48 ring ring-primary ring-offset-base-100 ring-offset-2"
-      >
-        <img src="./img/portfolio_pic.jpg" />
-      </div>
-    </div>
-
-    <div class="flex flex-col items-center justify-center">
-      <div>
-        <template x-for="project in my_projects" :key="project.name">
-          <div class="shadow-xl card w-96 bg-base-100 image-full">
-            <figure>
-              <img :src="project.url" alt="Shoes" />
-            </figure>
-            <div class="card-body">
-              <h2 x-text="project.name" class="card-title"></h2>
-              <p x-text="project.description"></p>
-              <div
-                class="border-2 mockup-code bg-primary text-secondary border-primary"
-              >
-                <pre class="bg-primary">
-                  <code class="text-info" x-text="project.code">can be any color!     
-                </code>
-                </pre>
-              </div>
-              <div class="justify-end card-actions">
-                <!-- <button class="btn btn-primary">Buy Now</button> -->
-              </div>
+    <div class="container flex flex-col items-center justify-center">
+      <section class="min-h-screen hero bg-base-200">
+        <div class="flex-col hero-content lg:flex-row">
+          <div class="avatar">
+            <div
+              class="w-24 rounded-full lg:w-48 ring ring-primary ring-offset-base-100 ring-offset-2"
+            >
+              <img src="./img/portfolio_pic.jpg" />
             </div>
           </div>
-        </template>
-      </div>
+          <article class="prose lg:prose-xl">
+            <h1 class="text-5xl font-bold">Hello, there! ;D</h1>
+            <p class="py-6">
+              I'm Nicholas Preston, a .NET Engineer with a fondness for
+              optimizing and updating Web stacks to modern Full Stack
+              Developement standards, whether it's .NET 6 MVC Razor Pages or a
+              Javascript Framework like ReactJS or Vue, I've got you and your
+              team covered!
+            </p>
+            <br />
+            <aside class="italic text-tiny">
+              I'm also a big C# nerd and big fan of Nick Chapsas and the
+              legendary John Skeet!
+            </aside>
+
+            <!-- <a href="contact.html">Contact</a> -->
+
+            <button class="btn btn-primary bg-primary text-neutral-content">
+              See My Work Below!
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skeeels! -->
+
+      <section
+        class="flex flex-col items-center justify-center min-h-screen gap-4"
+      >
+        <article class="prose lg:prose-xl">
+          <h1>Nearly 50 Skills in 9 Years</h1>
+          <p>
+            Not content with just being a backender, these are the tech skills
+            I've aqcuired over the years in my bid to become America's next top
+            Full Stack Developer...
+          </p>
+
+          <p>
+            I've seen quite a bit of code and written even more. From working
+            strictly in .NET Framework Web Forms to becoming a Level 2
+            Consultant (briefly) and using Golang with ReactJS, I've tried at
+            least couple stacks ... and even modified an "out there" stack to
+            better suit my client's needs.
+          </p>
+
+          <p>
+            I've enjoyed the hidden perks of having worked with multipe great
+            Developement teams, learning from each one valuable lessons that
+            have followed me throughout my career and have proved invaluable to
+            me and others I've had the pleasure of working with.
+          </p>
+          <!-- <div class="alert alert-success">Gifs to come soon!</div> -->
+        </article>
+
+        <div class="">
+          <div class="grid grid-cols-4">
+            <template x-for="skill in my_skills" :key="skill.name" class="">
+              <div class="shadow-xl card w-96 bg-base-100">
+                <figure class="px-10 pt-10">
+                  <img
+                    src="https://placeimg.com/400/225/arch"
+                    alt="Projects"
+                    class="rounded-xl"
+                  />
+                </figure>
+                <div class="items-center text-center card-body">
+                  <h2 x-text="skill.name" class="card-title"></h2>
+                  <!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
+                  <div class="card-actions">
+                    <!-- <button class="btn btn-primary">Buy Now</button> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="card">
+              <span x-text="skill.name"></span>
+              <h3 x-text="skill.companies_used_at"></h3>
+              <div
+                class="radial-progress"
+                :value="skill.percent_mastery"
+                :style="skill.percent_mastery_label"
+              ></div>
+            </div> -->
+            </template>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-screen h-screen min-h-screen">
+        <div class="h-screen">
+          <iframe
+            src="https://bold.pro/my/nicholas-preston-221105215517"
+            framespacing="0"
+            frameborder="no"
+            scrolling="no"
+            class=""
+            id="child-iframe"
+          >
+          </iframe>
+        </div>
+        <!-- <h1>Contact me</h1>
+      <iframe
+        src="https://bold.pro/my/nicholas-preston-221105215517/contact"
+        framespacing="0"
+        frameborder="no"
+        scrolling="no"
+      >
+      </iframe> -->
+      </section>
+
+      <!-- Hide that silly boldpro logo -->
+      <!-- <div class="z-50 h-32 text-white">
+    </div> -->
+
+      <section x-show="false">
+        <div class="flex flex-col items-center justify-center">
+          <template x-for="project in my_projects" :key="project.name">
+            <div class="shadow-xl card w-72 bg-base-100 image-full">
+              <figure>
+                <img :src="project.url" alt="Shoes" />
+              </figure>
+              <div class="card-body">
+                <h2 x-text="project.name" class="card-title"></h2>
+                <p x-text="project.description"></p>
+                <div
+                  class="border-2 mockup-code bg-primary text-secondary border-primary"
+                >
+                  <template x-for="line in project.code" :key="line">
+                    <pre class="bg-primary" :value="project.code">
+                    <code class="text-info" x-text="line">
+                    </code>
+                  </pre>
+                  </template>
+                </div>
+                <div class="justify-end card-actions">
+                  <!-- <button class="btn btn-primary">Buy Now</button> -->
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </section>
     </div>
   </body>
 
@@ -72,7 +185,7 @@
         ACME Industries Ltd. <br />Providing reliable tech since 2014
       </p>
     </div>
-    <div>
+    <div x-show="false">
       <span class="footer-title">Social</span>
       <div class="grid grid-flow-col gap-4">
         <a
@@ -115,15 +228,44 @@
     </div>
   </footer>
   <script>
-    // const projects = require("./src/projects.js");
     function setup() {
-      // import { projects } from "./src/projects.js";
       console.log(projects);
+      console.log("mah skills", skills);
       return {
         message: "Uh oh... I think I took a wrong turn at albequrue!",
         open: false,
         my_projects: projects || [],
+        my_skills: skills || [],
+        progress: "--value: 70",
       };
     }
+  </script>
+  <script>
+    window.addEventListener("load", function () {
+      let message = {
+        height: document.body.scrollHeight,
+        width: document.body.scrollWidth,
+      };
+
+      // window.top refers to parent window
+      window.top.postMessage(message, "*");
+    });
+  </script>
+
+  <script>
+    let iframe = document.querySelector("#child-iframe");
+
+    window.addEventListener(
+      "message",
+      function (e) {
+        if (!iframe) return;
+        // message that was passed from iframe page
+        let message = e.data;
+
+        iframe.style.height = message.height + "px";
+        iframe.style.width = message.width + "px";
+      },
+      false
+    );
   </script>
 </html>

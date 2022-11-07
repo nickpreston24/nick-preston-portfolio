@@ -1,11 +1,5 @@
-// const plugin = require('tailwindcss/plugin')
-// console.log(process.env.NODE_ENV);
-// const run_purge = process.env.NODE_ENV === "production";
-
 const colors = require("tailwindcss/colors");
 module.exports = {
-  // purge: { enabled: run_purge, content: ["./**/*.html"] },
-  // content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   content: ["index.html", "./src/**/*.{js,jsx,ts,tsx,vue,html}"],
   darkMode: "class", // or 'media' or 'class'
   theme: {
@@ -301,6 +295,10 @@ module.exports = {
       opacity: ["disabled"],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("daisyui"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
 };
