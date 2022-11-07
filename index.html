@@ -10,7 +10,7 @@
     <script type="module" src="./src/skillz.js"></script>
   </head>
   <body x-data="setup()">
-    <div class="container flex flex-col items-center justify-center">
+    <div class="flex flex-col items-center justify-center0">
       <section class="min-h-screen hero bg-base-200">
         <div class="flex-col hero-content lg:flex-row">
           <div class="avatar">
@@ -20,7 +20,7 @@
               <img src="./img/portfolio_pic.jpg" />
             </div>
           </div>
-          <article class="prose lg:prose-xl">
+          <article class="prose prose-stone lg:prose-xl">
             <h1 class="text-5xl font-bold">Hello, there! ;D</h1>
             <p class="py-6">
               I'm Nicholas Preston, a .NET Engineer with a fondness for
@@ -46,70 +46,10 @@
 
       <!-- Skeeels! -->
 
-      <section
-        class="flex flex-col items-center justify-center min-h-screen gap-4"
-      >
-        <article class="prose lg:prose-xl">
-          <h1>Nearly 50 Skills in 9 Years</h1>
-          <p>
-            Not content with just being a backender, these are the tech skills
-            I've aqcuired over the years in my bid to become America's next top
-            Full Stack Developer...
-          </p>
+      <div class="h-16"></div>
 
-          <p>
-            I've seen quite a bit of code and written even more. From working
-            strictly in .NET Framework Web Forms to becoming a Level 2
-            Consultant (briefly) and using Golang with ReactJS, I've tried at
-            least couple stacks ... and even modified an "out there" stack to
-            better suit my client's needs.
-          </p>
-
-          <p>
-            I've enjoyed the hidden perks of having worked with multipe great
-            Developement teams, learning from each one valuable lessons that
-            have followed me throughout my career and have proved invaluable to
-            me and others I've had the pleasure of working with.
-          </p>
-          <!-- <div class="alert alert-success">Gifs to come soon!</div> -->
-        </article>
-
-        <div class="">
-          <div class="grid grid-cols-4">
-            <template x-for="skill in my_skills" :key="skill.name" class="">
-              <div class="shadow-xl card w-96 bg-base-100">
-                <figure class="px-10 pt-10">
-                  <img
-                    src="https://placeimg.com/400/225/arch"
-                    alt="Projects"
-                    class="rounded-xl"
-                  />
-                </figure>
-                <div class="items-center text-center card-body">
-                  <h2 x-text="skill.name" class="card-title"></h2>
-                  <!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
-                  <div class="card-actions">
-                    <!-- <button class="btn btn-primary">Buy Now</button> -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- <div class="card">
-              <span x-text="skill.name"></span>
-              <h3 x-text="skill.companies_used_at"></h3>
-              <div
-                class="radial-progress"
-                :value="skill.percent_mastery"
-                :style="skill.percent_mastery_label"
-              ></div>
-            </div> -->
-            </template>
-          </div>
-        </div>
-      </section>
-
-      <section class="w-screen h-screen min-h-screen">
-        <div class="h-screen">
+      <section class="flex flex-col items-center justify-center w-screen">
+        <div class="aspect-auto">
           <iframe
             src="https://bold.pro/my/nicholas-preston-221105215517"
             framespacing="0"
@@ -119,6 +59,35 @@
             id="child-iframe"
           >
           </iframe>
+
+          <div class="h-16"></div>
+
+          <a href="https://bold.pro/my/nicholas-preston-221105215517">
+            <div class="alert alert-success">View my full Resume here!</div>
+          </a>
+
+          <!-- The button to open modal -->
+          <label hx-trigger="intersect once" for="my-modal-4" class="btn"
+            >open modal</label
+          >
+
+          <!-- Put this part before </body> tag -->
+          <input
+            hx-trigger="revealed"
+            hx-get="none"
+            type="checkbox"
+            id="my-modal-4"
+            class="modal-toggle"
+          />
+          <label for="my-modal-4" class="cursor-pointer modal">
+            <label class="relative modal-box" for="">
+              <h3 class="text-lg font-bold">Hello again!</h3>
+              <p class="py-4">
+                You can read the rest of the resume here, or click the button
+                below to download it!
+              </p>
+            </label>
+          </label>
         </div>
         <!-- <h1>Contact me</h1>
       <iframe
@@ -129,6 +98,9 @@
       >
       </iframe> -->
       </section>
+
+      <div class="h-64"></div>
+      <div class="h-64"></div>
 
       <!-- Hide that silly boldpro logo -->
       <!-- <div class="z-50 h-32 text-white">
@@ -160,6 +132,69 @@
               </div>
             </div>
           </template>
+        </div>
+      </section>
+
+      <section
+        x-show="false"
+        class="flex flex-col items-center justify-center min-h-screen gap-4"
+      >
+        <article class="prose lg:prose-xl">
+          <h1>Nearly 50 Skills in 9 Years</h1>
+          <p>
+            Not content with just being a backender, these are the tech skills
+            I've aqcuired over the years in my bid to become America's next top
+            Full Stack Developer...
+          </p>
+
+          <p>
+            I've seen a good bit of code and written even more for fun and
+            professionally. From working strictly in .NET Framework Web Forms to
+            becoming a Level 2 Consultant (briefly) and using Golang with
+            ReactJS, I've tried at least couple stacks ... and even modified an
+            "out there" stack to better suit my client's needs.
+          </p>
+
+          <p>
+            I've enjoyed the hidden perks of having worked with multipe great
+            Developement teams, learning from each one valuable lessons that
+            have followed me throughout my career and have proved invaluable to
+            me and others I've had the pleasure of working with.
+          </p>
+          <!-- <div class="alert alert-success">Gifs to come soon!</div> -->
+        </article>
+
+        <div class="">
+          <div class="grid grid-cols-4">
+            <template x-for="skill in my_skills">
+              <div class="shadow-xl card w-96 bg-base-100">
+                <figure class="px-10 pt-10">
+                  <img
+                    src="https://placeimg.com/400/225/arch"
+                    alt="Projects"
+                    class="rounded-xl"
+                  />
+                </figure>
+                <div class="items-center text-center card-body">
+                  <h2 x-text="skill.name" class="card-title"></h2>
+                  <!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
+                  <div class="card-actions">
+                    <!-- <button class="btn btn-primary">Buy Now</button> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="card">
+              <span x-text="skill.name"></span>
+              <h3 x-text="skill.companies_used_at"></h3>
+              <div
+                class="radial-progress"
+                :value="skill.percent_mastery"
+                :style="skill.percent_mastery_label"
+              ></div>
+            </div> -->
+            </template>
+          </div>
         </div>
       </section>
     </div>
@@ -258,7 +293,7 @@
     window.addEventListener(
       "message",
       function (e) {
-        if (!iframe) return;
+        if (!iframe || !e) return;
         // message that was passed from iframe page
         let message = e.data;
 
