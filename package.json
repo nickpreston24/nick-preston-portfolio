@@ -22,6 +22,7 @@
     "alpinejs": "^3.10.5",
     "daisyui": "^2.38.1",
     "htmx.org": "^1.8.4",
+    "markdown-it": "^13.0.1",
     "watch": "^1.0.2"
   }
 }

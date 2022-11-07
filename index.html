@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html data-theme="synthwave" lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nick Preston</title>
-    <link rel="stylesheet" href="./dist/css/app.css" />
+    <!-- <link rel="stylesheet" href="./dist/css/app.css" /> -->
+    <script type="module" src="./main.js"></script>
   </head>
-  <body>
-    <div id="app"></div>
-
-    <h1 class="text-3xl font-bold underline text-tahiti-500">Hello world!</h1>
+  <body x-data="setup()">
+    <h1 class="text-3xl font-bold underline text-secondary">Hello world!</h1>
+    <h2 class="text-2xl font-bold underline text-secondary">
+      I've got a lovely bunch of coconuts!
+    </h2>
+    <h1 class="text-xl font-bold underline text-secondary">Hello world!</h1>
     <!-- <h1 class="text-3xl bg-ocean-500 text-violet-700">Testing</h1> -->
     <!-- <p class="text-3xl text-tahiti-400">boop3</p> -->
 
-    <div class="mockup-code bg-primary text-primary-content">
-      <pre><code class="bg-black text-primary">can be any color!</code></pre>
+    <div class="border-2 mockup-code bg-primary text-secondary border-primary">
+      <pre>
+        <code class="text-info">can be any color!        
+      </code>
+      </pre>
+    </div>
+
+    <div class="flex flex-col items-center justify-center">
+      <button class="btn btn-primary">Click mee!</button>
+      <button class="btn btn-secondary">Click me, too!</button>
+      <span class="alert alert-error" x-show="open" x-text="message"></span>
+
+      <div>
+        <button class="btn btn-ghost" @click="open = !open">Expand</button>
+
+        <span x-show="open"> Content... </span>
+      </div>
     </div>
   </body>
+  <script>
+    function setup() {
+      return {
+        message: "Uh oh... I think I took a wrong turn at albequrue!",
+        open: false,
+      };
+    }
+  </script>
 </html>
