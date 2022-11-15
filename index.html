@@ -118,7 +118,6 @@
 
       <section class="{ 'active': active_page === 2 }" x-show.transition.in.opacity.duration.600="active_page === 2">
 
-
         <div class="flex flex-col items-center justify-center">
 
           <section x-show="true">
@@ -126,7 +125,7 @@
               <template x-for="project in my_projects" :key="project.name">
                 <div class="shadow-xl card max-w-sm bg-base-100 image-full">
                   <figure>
-                    <img :src="project.url" alt="Shoes" />
+                    <img :src="project.url" alt="Project" />
                   </figure>
                   <div class="card-body">
                     <h2 x-text="project.name" class="card-title"></h2>
@@ -152,28 +151,27 @@
             </div>
           </section>
 
-
         </div>
-
 
       </section>
 
 
       <!-- RESUME -->
-      <section name="resume" class="{ 'h-screen active': active_page === 3}"
-        x-show.transition.in.opacity.duration.600="active_page === 3">
+      <template>
+        <section x-if=" active_page === 3" name="resume" class="{ 'h-screen active': active_page === 3}"
+          x-show.transition.in.opacity.duration.600="active_page === 3">
 
-        <div class="h-screen">
+          <div class="h-screen">
 
-          <div class="aspect-auto">
-            <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0" frameborder="no"
-              scrolling="no" class="" id="child-iframe">
-            </iframe>
+            <div class="aspect-auto">
+              <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0" frameborder="no"
+                scrolling="no" class="" id="child-iframe">
+              </iframe>
+            </div>
+
           </div>
 
-        </div>
-
-        <!-- 
+          <!-- 
         <div class="h-64"></div>
 
         <a href="https://bold.pro/my/nicholas-preston-221105215517">
@@ -181,6 +179,26 @@
         </a> -->
 
 
+        </section>
+
+      </template>
+
+      <section class="{ 'h-screen active': active_page === 4}"
+        x-show.transition.in.opacity.duration.600="active_page === 4">
+        <h1>Sandbox </h1>
+
+        <div class="grid lg:grid-cols-3 grid-cols-4 gap-2">
+
+          <template x-for="i in 20">
+            <div
+              class="box w-12 h-12 border-4 border-ocean-500 bg-tahiti-300 text-tahiti-600 items-center justify-center flex">
+              <p x-text="i"></p>
+            </div>
+
+          </template>
+        </div>
+
+        <!-- <span x-text="process.env.NODE_ENV"></span> -->
       </section>
 
       <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label>
@@ -193,7 +211,7 @@
         <li x-on:click="change_to_page(1)"><a>Skills</a></li>
         <li x-on:click="change_to_page(2)"><a>Projects</a></li>
         <li x-on:click="change_to_page(3)"><a>Resume</a></li>
-        <li x-on:click="change_to_page(4)"><a>Contact</a></li>
+        <li x-show="true" x-on:click="change_to_page(4)"><a>Sandbox</a></li>
 
       </ul>
     </div>
@@ -235,10 +253,41 @@
     </div>
   </div>
 </footer>
+
+<script type="module">
+  import anime from 'animejs/lib/anime.es.js';
+
+  var elements = document.querySelectorAll('.box')
+
+  anime({
+    targets: elements,
+    // translateX: -150,
+    // translateY: 150,
+
+    keyframes: [
+      { translateY: -40 },
+      { translateX: 250 },
+      { translateY: 40 },
+      { translateX: 0 },
+      { translateY: 0 }
+    ],
+    scale: [
+      { value: .1, easing: 'easeOutSine', duration: 500 },
+
+      { value: 1, easing: 'easeInOutQuad', duration: 1200 },
+    ],
+    delay: anime.stagger(200, { grid: [14, 5], from: 'center' }),
+    rotate: '1turn'
+  });
+
+</script>
 <script>
   function setup() {
     console.log(projects);
     console.log("mah skills", skills);
+
+    // import { mode } from './main.js'
+    // console.log('current mode:>>' + mode)
 
     const previous_page = parseInt(localStorage.getItem('previous_page'))
 

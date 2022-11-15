@@ -1,8 +1,7 @@
 export const projects = [
   {
-    // name: "Oncor Streetlight",
-    // url: "https://airtable.com/appIU6DfQKUWUaqSI/tblUrJPBzjOlR83Fh/viwRQAImH61floEO7/rec3nkz1YeCY7GrhE/fldQvggEoHCIKQkil?copyLinkToCellOrRecordOrigin=gridView",
-    // img: "https://airtable.com/appIU6DfQKUWUaqSI/tblUrJPBzjOlR83Fh/viwRQAImH61floEO7/rec3nkz1YeCY7GrhE/fld0NJD7XJafT5cCS?copyLinkToCellOrRecordOrigin=gridView",
+    name: "Oncor Streetlight",
+    url: "https://placeimg.com/400/225/arch",
   },
   { name: "Sharpify", url: "https://placeimg.com/400/225/arch" },
   { name: "Shargs", url: "https://placeimg.com/400/225/arch" },
