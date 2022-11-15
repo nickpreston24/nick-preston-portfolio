@@ -157,21 +157,20 @@
 
 
       <!-- RESUME -->
-      <template>
-        <section x-if=" active_page === 3" name="resume" class="{ 'h-screen active': active_page === 3}"
-          x-show.transition.in.opacity.duration.600="active_page === 3">
+      <section name="resume" class="{ 'h-screen active': active_page === 3}"
+        x-show.transition.in.opacity.duration.600="active_page === 3">
 
-          <div class="h-screen">
+        <div class="h-screen">
 
-            <div class="aspect-auto">
-              <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0" frameborder="no"
-                scrolling="no" class="" id="child-iframe">
-              </iframe>
-            </div>
-
+          <div class="aspect-auto">
+            <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0" frameborder="no"
+              scrolling="no" class="" id="child-iframe">
+            </iframe>
           </div>
 
-          <!-- 
+        </div>
+
+        <!-- 
         <div class="h-64"></div>
 
         <a href="https://bold.pro/my/nicholas-preston-221105215517">
@@ -179,9 +178,8 @@
         </a> -->
 
 
-        </section>
+      </section>
 
-      </template>
 
       <section class="{ 'h-screen active': active_page === 4}"
         x-show.transition.in.opacity.duration.600="active_page === 4">
