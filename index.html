@@ -84,36 +84,38 @@
           <div class="">
             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               <template x-for="skill in my_skills">
-
-
                 <div class="card w-96 bg-base-100 shadow-xl image-full">
-                  <figure><img :src="skill.icon_path" :alt="skill.Name" /></figure>
+                  <figure><img class="" :src="skill.icon_path" :alt="skill.Name" />
+                  </figure>
                   <div class="card-body">
                     <h2 class="card-title" x-text="skill.Name"></h2>
                     <p x-text="skill.Experiences">...</p>
                     <div class="card-actions justify-end">
 
 
-                      <div x-html="skill.rating_html"></div>
+                      <!-- <span x-text="skill['Self-Rating']"></span> -->
+
+                      <progress class="progress progress-secondary w-56  bg-error " :value="skill['Self-Rating']"
+                        max="5"></progress>
+                      <!-- <div x-html="skill.rating_html"></div> -->
 
 
                       <!-- <button class="btn btn-primary">Buy Now</button> -->
-                      <!-- <span x-text="skill['Self-Rating']"></span> -->
 
                       <!-- <template x-for="i in skill['Self-Rating']">
                         <li x-text="i"></li>
                       </template> -->
 
 
-                      <div class="rating" x-bind="skill['Self-Rating']">
-                        <template x-for="i in skill['Self-Rating']">
+                      <!-- <div class="rating" x-bind="skill['Self-Rating']">
+                        <template x-for="i in skill['Self-Rating']"> -->
 
-                          <!-- <span x-text="i"></span> -->
-                          <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked /> -->
+                      <!-- <span x-text="i"></span> -->
+                      <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked /> -->
 
-                          <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-500" /> -->
-                        </template>
-                      </div>
+                      <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-500" /> -->
+                      <!-- </template>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -280,10 +282,11 @@
 <script type="module">
   import anime from 'animejs/lib/anime.es.js';
   console.log('anime', anime)
-  var elements = document.querySelectorAll('.box')
+  var boxes = document.querySelectorAll('.box')
+  var tech_cards = document.querySelectorAll('.card')
 
   anime({
-    targets: elements,
+    targets: boxes,
     // translateX: -150,
     // translateY: 150,
 
@@ -302,6 +305,17 @@
     delay: anime.stagger(200, { grid: [14, 5], from: 'center' }),
     rotate: '1turn'
   });
+
+  anime({
+    targets: tech_cards,
+    keyframes: [],
+    scale: [
+      { value: .1, easing: 'easeOutSine', duration: 500 },
+
+      { value: 1, easing: 'easeInOutQuad', duration: 1200 },
+    ],
+    delay: anime.stagger(200, { grid: [14, 5], from: 'center' }),
+  })
 
 </script>
 <script>

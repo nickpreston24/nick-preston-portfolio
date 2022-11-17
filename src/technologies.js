@@ -13,11 +13,11 @@ technologies.forEach((tech) => {
 
   tech.icon_path = !!filename ? "./img/icons/" + filename : "./img/arch.jpeg";
 
-  tech.rating_html = `
-  <template x-for="i in ${tech["Self-Rating"]}">
-    <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked />
-  </template>
-  `;
+  //   tech.rating_html = `
+  //   <template x-for="i in ${tech["Self-Rating"]}">
+  //     <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked />
+  //   </template>
+  //   `;
 
   console.log("tech.icon_path :>> ", tech.icon_path);
 });
