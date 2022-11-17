@@ -69,7 +69,7 @@
               professionally. From working strictly in .NET Framework Web Forms to
               becoming a Level 2 Consultant (briefly) and using Golang with
               ReactJS, I've tried at least couple stacks ... and even modified an
-              "out there" stack to better suit my client's needs.
+              unconventional stack to better suit my client's needs.
             </p>
 
             <p>
@@ -80,22 +80,47 @@
             </p>
             <!-- <div class="alert alert-success">Gifs to come soon!</div> -->
           </article>
-
+          <!-- <input x-show="false" type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked /> -->
           <div class="">
-            <div class="grid grid-cols-4">
+            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
               <template x-for="skill in my_skills">
-                <div class="shadow-xl card w-96 bg-base-100">
-                  <figure class="px-10 pt-10">
-                    <img src="./img/arch.jpeg" alt="Projects" class="rounded-xl" />
-                  </figure>
-                  <div class="items-center text-center card-body">
-                    <h2 x-text="skill.name" class="card-title"></h2>
-                    <!-- <p>If a dog chews shoes whose shoes does he choose?</p> -->
-                    <div class="card-actions">
+
+
+                <div class="card w-96 bg-base-100 shadow-xl image-full">
+                  <figure><img :src="skill.icon_path" :alt="skill.Name" /></figure>
+                  <div class="card-body">
+                    <h2 class="card-title" x-text="skill.Name"></h2>
+                    <p x-text="skill.Experiences">...</p>
+                    <div class="card-actions justify-end">
+
+
+                      <div x-html="skill.rating_html"></div>
+
+
                       <!-- <button class="btn btn-primary">Buy Now</button> -->
+                      <!-- <span x-text="skill['Self-Rating']"></span> -->
+
+                      <!-- <template x-for="i in skill['Self-Rating']">
+                        <li x-text="i"></li>
+                      </template> -->
+
+
+                      <div class="rating" x-bind="skill['Self-Rating']">
+                        <template x-for="i in skill['Self-Rating']">
+
+                          <!-- <span x-text="i"></span> -->
+                          <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked /> -->
+
+                          <!-- <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-500" /> -->
+                        </template>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- <div>
+                  See it on Glassdoor
+                </div> -->
 
                 <!-- <div class="card">
                   <span x-text="skill.name"></span>
@@ -185,7 +210,7 @@
         x-show.transition.in.opacity.duration.600="active_page === 4">
         <h1>Sandbox </h1>
 
-        <div class="grid lg:grid-cols-3 grid-cols-4 gap-2">
+        <div class="grid lg:grid-cols-3 grid-cols-2 gap-2">
 
           <template x-for="i in 20">
             <div
