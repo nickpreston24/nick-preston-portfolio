@@ -1,15 +1,17 @@
+const arch_image = "./img/arch.jpeg";
+
 export const projects = [
   {
     name: "Oncor Streetlight",
-    url: "https://placeimg.com/400/225/arch",
+    url: arch_image,
   },
-  { name: "Sharpify", url: "https://placeimg.com/400/225/arch" },
-  { name: "Shargs", url: "https://placeimg.com/400/225/arch" },
-  { name: "SalesOrderAllocations2", url: "https://placeimg.com/400/225/arch" },
-  { name: "ShellEnergy/MP2", url: "https://placeimg.com/400/225/arch" },
+  { name: "Sharpify", url: arch_image },
+  { name: "Shargs", url: arch_image },
+  { name: "SalesOrderAllocations2", url: arch_image },
+  { name: "ShellEnergy/MP2", url: arch_image },
   {
     name: "Parsley",
-    url: "https://placeimg.com/400/225/arch",
+    url: arch_image,
     description:
       "Extracts any class instance from text, given a Regex Pattern with Named Capture groups.",
     code: [

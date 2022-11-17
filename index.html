@@ -86,7 +86,7 @@
               <template x-for="skill in my_skills">
                 <div class="shadow-xl card w-96 bg-base-100">
                   <figure class="px-10 pt-10">
-                    <img src="https://placeimg.com/400/225/arch" alt="Projects" class="rounded-xl" />
+                    <img src="./img/arch.jpeg" alt="Projects" class="rounded-xl" />
                   </figure>
                   <div class="items-center text-center card-body">
                     <h2 x-text="skill.name" class="card-title"></h2>
@@ -254,7 +254,7 @@
 
 <script type="module">
   import anime from 'animejs/lib/anime.es.js';
-
+  console.log('anime', anime)
   var elements = document.querySelectorAll('.box')
 
   anime({
