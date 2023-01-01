@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && `npm run buildcss:release`",
+    "build": "vite build && npm run buildcss:release",
+    "start": "npx http-server ./dist",
     "preview": "vite preview",
     "buildcss:dev": "cross-env TAILWIND_MODE=build postcss ./css/style.css -o ./dist/css/app.css",
     "buildcss:release": "cross-env NODE_ENV=production postcss ./css/style.css -o ./dist/css/app.css"
@@ -25,6 +26,7 @@
     "alpinejs": "^3.10.5",
     "animejs": "^3.2.1",
     "daisyui": "^2.38.1",
-    "htmx.org": "^1.8.4"
+    "htmx.org": "^1.8.4",
+    "node-fetch": "^3.3.0"
   }
 }
