@@ -92,7 +92,7 @@
             <!-- <div class="alert alert-success">Gifs to come soon!</div> -->
           </article>
           <!-- <input x-show="false" type="radio" name="rating-4" class="mask mask-star-2 bg-green-500" checked /> -->
-          <section class="w-full flex flex-col gap-4" data-theme="corporate">
+          <section class="w-full flex flex-col gap-4">
 
             <!-- SKILLs SECTION (AIRTABLE IFRAME) -->
 
@@ -176,61 +176,98 @@
 
       <!-- PROJECTS -->
 
+
+
       <section class="{ 'active': active_page === 2 }" x-show.transition.in.opacity.duration.600="active_page === 2">
+        <!-- SKILLZ -->
 
+        <div x-show="true" class="flex flex-col items-center justify-center gap-4">
+          <article class="prose lg:prose-xl">
+            <h1>Projects</h1>
+          </article>
 
-        <div class="hero min-h-screen flex flex-row bg-base-200">
-          <div class="hero-content flex-col lg:flex-col">
-            <h1 class="text-5xl font-bold">Projects</h1>
-            <p class="w-1/2 font-bold text-md text-accent">Teams and Projects I've worked on</p>
+          <section class="w-full flex flex-col gap-4">
 
-          </div>
+            <!-- SKILLs SECTION (AIRTABLE IFRAME) -->
 
-          <div class="card-body w-min-2xl max-w-none">
+            <div class="hero min-h-screen flex flex-row bg-base-200">
+              <div class="hero-content flex-col lg:flex-col">
+                <h1 class="text-5xl font-bold">All Projects</h1>
+                <p class="w-1/2 font-bold text-md text-accent">These are projects I've worked on</p>
+              </div>
 
-            <iframe class="airtable-embed"
-              src="https://airtable.com/embed/shrLtqnXzMV46XOMd?backgroundColor=green&viewControls=on" frameborder="0"
-              onmousewheel="" width="100%" height="533"
-              style="background: transparent; border: 1px solid #ccc;"></iframe>
-          </div>
-        </div>
+              <div class="card-body w-full">
 
-        <div x-show="false" class="flex flex-col items-center justify-center">
-
-          <section x-show="false">
-            <div class="flex flex-col items-center justify-center">
-              <template x-for="project in my_projects" :key="project.name">
-                <div class="shadow-xl card max-w-sm bg-base-100 image-full">
-                  <figure>
-                    <img :src="project.url" alt="Project" />
-                  </figure>
-                  <div class="card-body">
-                    <h2 x-text="project.name" class="card-title"></h2>
-                    <div class="">
-
-                      <p class="" x-text="project.description"></p>
-                    </div>
-                    <div class="border-2 mockup-code bg-primary text-secondary border-primary">
-                      <template x-for="line in project.code" :key="line">
-                        <pre class="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-primary"
-                          :value="project.code">
-                          <code class="text-info" x-text="line">
-                          </code>
-                        </pre>
-                      </template>
-                    </div>
-                    <div class="justify-end card-actions">
-                      <!-- <button class="btn btn-primary">Buy Now</button> -->
-                    </div>
-                  </div>
-                </div>
-              </template>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus enim incidunt voluptates sed,
+                excepturi quas culpa quam, quod tempora totam natus consequatur recusandae iste rerum, laboriosam ut hic
+                explicabo impedit!
+              </div>
             </div>
-          </section>
 
+
+          </section>
         </div>
 
       </section>
+
+
+
+      <!-- OLD PROJECTs from JS file implementation -->
+      <template x-if="false">
+
+        <section class="{ 'active': active_page === 2 }" x-show.transition.in.opacity.duration.600="active_page === 2">
+
+
+          <div class="hero min-h-screen flex flex-row bg-base-200">
+            <div class="hero-content flex-col lg:flex-col">
+              <h1 class="text-5xl font-bold">Projects</h1>
+              <p class="w-1/2 font-bold text-md text-accent">Teams and Projects I've worked on</p>
+
+            </div>
+
+            <div class="card-body w-min-2xl max-w-none">
+
+
+            </div>
+          </div>
+
+
+          <div x-show="false" class="flex flex-col items-center justify-center">
+
+            <section x-show="false">
+              <div class="flex flex-col items-center justify-center">
+                <template x-for="project in my_projects" :key="project.name">
+                  <div class="shadow-xl card max-w-sm bg-base-100 image-full">
+                    <figure>
+                      <img :src="project.url" alt="Project" />
+                    </figure>
+                    <div class="card-body">
+                      <h2 x-text="project.name" class="card-title"></h2>
+                      <div class="">
+
+                        <p class="" x-text="project.description"></p>
+                      </div>
+                      <div class="border-2 mockup-code bg-primary text-secondary border-primary">
+                        <template x-for="line in project.code" :key="line">
+                          <pre class="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-primary"
+                            :value="project.code">
+                          <code class="text-info" x-text="line">
+                          </code>
+                        </pre>
+                        </template>
+                      </div>
+                      <div class="justify-end card-actions">
+                        <!-- <button class="btn btn-primary">Buy Now</button> -->
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </section>
+
+          </div>
+        </section>
+      </template>
 
 
       <!-- RESUME -->
