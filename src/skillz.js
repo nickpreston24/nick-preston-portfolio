@@ -2,40 +2,34 @@ export const skills = [
   {
     name: ".NET Framework",
     years: 9,
-    companies_used_at: "All Companies sans CyberGroup",
-    years_to_master: 10,
+    companies_used_at: "All Companies except for CyberGroup",
   },
   { name: ".NET Core", years: 3, companies_used_at: "", years_to_master: 10 },
   {
     name: ".NET Web API (REST)",
     years: 5,
     companies_used_at: "",
-    years_to_master: 10,
   },
   {
     name: "ReactJS",
     years: 4,
     companies_used_at: "Triencon Services Inc., CyberGroup, DR Horton",
     other_uses: "classwork and hobby projects",
-    years_to_master: 10,
   },
   {
     name: ".NET 6",
     years: 1,
     companies_used_at: "Four Hands Furniture",
-    years_to_master: 10,
   },
   {
     name: "Razor Pages",
     years: 1,
     companies_used_at: "Four Hands Furniture",
-    years_to_master: 10,
   },
   {
     name: "VueJS / AlpineJS",
     years: 2,
     companies_used_at: "Four Hands Furniture",
-    years_to_master: 10,
   },
 ];
 
