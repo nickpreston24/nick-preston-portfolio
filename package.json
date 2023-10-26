@@ -11,6 +11,7 @@
     "buildcss:release": "cross-env NODE_ENV=production postcss ./css/style.css -o ./dist/css/app.css"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "latest",
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
