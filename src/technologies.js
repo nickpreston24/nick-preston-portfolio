@@ -11,7 +11,7 @@ technologies.forEach((tech) => {
   const { filename } = match?.groups || {};
   // console.log("filename :>> ", filename);
 
-  tech.icon_path = !!filename ? "./img/icons/" + filename : "./img/arch.jpeg";
+  tech.icon_path = !!filename ? "/img/icons/" + filename : "image-missing.jpeg";
 
   //   tech.rating_html = `
   //   <template x-for="i in ${tech["Self-Rating"]}">

@@ -7,9 +7,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nick Preston</title>
   <script type="module" src="./main.js"></script>
+
+  <!-- <script type="module">
+
+    const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
+    const AIRTABLE_TOKEN = import.meta.env.VITE_AIRTABLE_TOKEN;
+    const max_records = 100;
+
+    const TableName = "Technologies";
+    const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TableName}?maxRecords=${max_records}&view=Grid%20view`;
+
+    // console.log("airtable_url :>> ", AIRTABLE_URL);
+    // console.log('AIRTABLE_TOKEN :>> ', AIRTABLE_TOKEN);
+
+    export async function get_all_tech_skills() {
+      const response = await fetch(AIRTABLE_URL, {
+        headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` },
+      });
+
+      return await response.json();
+    }
+
+    const technical_skills = await get_all_tech_skills();
+
+    console.log('technical_skills :>> ', technical_skills.records);
+    // window.get_all_tech_skills = get_all_tech_skills;
+    // window.skills = technical_skills.records;
+
+    window.get_all_tech_skills = get_all_tech_skills;
+
+    console.log('get_all_tech_skills :>> ', get_all_tech_skills);
+  </script> -->
 </head>
 
 <body class="" x-data="setup()">
+
+  <!-- Debug panel -->
+  <!-- <template x-if="VITE_MODE === 'dev'">
+    <div>
+      <p>hellor there</p>
+      <span x-text="airtable_url"></span>
+    </div>
+  </template> -->
+
+
+  <!-- <span x-text="await get_skills()"></span> -->
+
+
 
   <label for="my-drawer" class="btn btn-primary drawer-button">Navigate</label>
 
@@ -89,15 +133,18 @@
 
             <!-- SKILLs SECTION (AIRTABLE IFRAME) -->
 
-            <div>
+
+            <div class="hero-content flex-col lg:flex-col">
+              <h1 class="text-5xl font-bold">Technical Skills</h1>
+              <p class="w-1/2 font-bold text-md text-accent">These are Technologies I've worked with, ranked by
+                Proficiency</p>
+
+            </div>
+
+            <div x-data="{skills: [{Name: 'One'}]}" x-init="skills = get_tech_skills()">
 
               <div class="hero min-h-screen flex flex-row bg-base-200">
-                <div class="hero-content flex-col lg:flex-col">
-                  <h1 class="text-5xl font-bold">Technical Skills</h1>
-                  <p class="w-1/2 font-bold text-md text-accent">These are Technologies I've worked with, ranked by
-                    Proficiency</p>
 
-                </div>
 
                 <div class="card-body w-full">
 
@@ -109,29 +156,30 @@
                       style="background: transparent; border: 1px solid #ccc;"></iframe>
                   </template>
 
-
                   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                    <template x-for="skill in skills">
-
-
+                    <template x-for="{id, fields} in skills">
                       <div class="card border-2 border-blue-500">
 
+                        <h1 x-text="id">...</h1>
+                        <h1 x-text="fields?.Name">...</h1>
+
                         <figure>
-                          <img class="" :src="skill.icon_path" :alt="skill.Name" />
+                          <img class="" :src="fields?.Media[0]?.url" :alt="fields?.Media[0]?.filename" />
+                          <!-- <img class="" :src="skill.icon_path" :alt="skill.Name" /> OLD -->
                         </figure>
 
                         <div class="card-body">
-                          <h2 class="card-title" x-text="skill.Name"></h2>
-                          <p x-text="skill.Experiences">...</p>
+                          <h2 class="card-title" x-text="fields?.Name"></h2>
+                          <p x-text="fields?.Experiences">...</p>
                           <div class="card-actions justify-end">
 
-                            <label class="label label-accent text-md text-secondary">Self Rating:</label>
-                            <span x-text=" skill['Self-Rating']"></span>
+                            <label class="label label-accent text-md text-secondary">Confidence</label>
+                            <span x-text=" fields['Self-Rating']"></span>
 
-                            <progress class="progress progress-secondary w-56  bg-error " :value="skill['Self-Rating']"
-                              max="10"></progress>
+                            <progress class="progress progress-secondary w-56 bg-error " :value="fields['Self-Rating']"
+                              max="5"></progress>
 
-                            <!-- <button x-show="skill.url" class="btn btn-primary">More Info</button> -->
+                            <button x-show="fields.url" class="btn btn-primary">More Info</button>
 
                           </div>
                         </div>
@@ -388,6 +436,18 @@
     </div>
   </div>
 </footer>
+<!-- 
+<script type="module">
+
+  import get_all_tech_skills from './src/airtable'
+  const technical_skills = await get_all_tech_skills();
+
+  console.log("technical_skills from airtable :>> ", technical_skills);
+
+  window.skills = technical_skills.records;
+  console.log("window.skills :>> ", window.skills);
+
+</script> -->
 
 <script type="module">
   import anime from 'animejs/lib/anime.es.js';
@@ -428,10 +488,34 @@
   })
 
 </script>
+
+
+
+
 <script>
+
+  // let skills = []
+  async function get_tech_skills() {
+    // console.log('helloooo skills!');
+
+    let res = await get_all_tech_skills();
+    console.log('records :>> ', res.records);
+    // skills = res.records;
+    return res.records;
+    // console.log('window.skills :>> ', window.skills);
+  }
+
+  // const res = await get_all_tech_skills();
+  // console.log('res :>> ', res);
+
+
   function setup() {
-    console.log('mah projects', projects);
+
+    // console.log('mah projects', projects);
     // console.log("mah skills", skills);
+
+    // console.log('window.skills :>> ', window.skills);
+    // console.log('window :>> ', window);
 
     const previous_page = parseInt(localStorage.getItem('previous_page'))
 
@@ -439,7 +523,7 @@
       message: "",
       open: false,
       progress: "--value: 70",
-
+      // skills: [],
       active_page: previous_page || 0,
       drawer_is_active: false,
       show_bold_resume: false,
@@ -476,7 +560,6 @@
         let next_index = this.routes[page_name]
         change_to_page(next_index);
       }
-
     };
   }
 </script>
