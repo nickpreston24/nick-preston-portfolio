@@ -6,10 +6,10 @@ technologies.forEach((tech) => {
   //   tech.icon_path = "./img/icons/" + tech.Media || "./img/arch.jpeg";
 
   const media = XRegExp(media_pattern, "x");
-  console.log("tech.Media :>> ", tech.Media);
+  // console.log("tech.Media :>> ", tech.Media);
   let match = XRegExp.exec(tech.Media, media);
   const { filename } = match?.groups || {};
-  console.log("filename :>> ", filename);
+  // console.log("filename :>> ", filename);
 
   tech.icon_path = !!filename ? "./img/icons/" + filename : "./img/arch.jpeg";
 
@@ -19,7 +19,7 @@ technologies.forEach((tech) => {
   //   </template>
   //   `;
 
-  console.log("tech.icon_path :>> ", tech.icon_path);
+  // console.log("tech.icon_path :>> ", tech.icon_path);
 });
 
 window.skills = technologies;

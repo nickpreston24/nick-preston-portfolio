@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html data-theme="halloween" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.50.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://unpkg.com/htmx.org@1.8.5"></script>
+
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <title>What's Taters, Precious?</title>
+</head>
+
+<body>
+
+    <div x-data="setup()" class="flex flex-col items-center justify-center">
+
+        <h1 class="text-3xl" x-text="message"></h1>
+
+        <div x-data="{ count: $persist(0) }">
+            <button x-on:click="count++">Increment</button>
+
+            <span x-text="count"></span>
+
+        </div>
+
+        <div x-data="{ skillz: $persist(all_skills) }">
+            <div class="flex flex-row items-center justify-center gap-2">
+                <template x-for="skill in all_skills">
+                    <h2 x-text="skill"></h2>
+                </template>
+            </div>
+
+            <!-- <button x-on:click="count++">Increment</button> -->
+
+            <!-- <span x-text="count"></span> -->
+
+        </div>
+
+        <form>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Add a new skill</span>
+                </label>
+
+                <label class="input-group">
+                    <span>Skill</span>
+                    <input type="text" placeholder="React" class="input input-bordered" />
+                </label>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+</body>
+<script>
+
+
+    document.addEventListener('alpine:init', () => {
+        // console.log('initializing');
+        // Alpine.store('darkMode', {
+        //     on: false,
+        //     toggle() {
+        //         this.on = !this.on
+        //     }
+        // })
+        // Alpine.data('dropdown', () => ({
+        //     open: false,
+        //     toggle() {
+        //         this.open = !this.open
+        //     }
+        // }))
+        // Alpine.store('notifications', {
+        //     items: ['hot lava'],
+        //     notify(message) {
+        //         this.items.push(message)
+        //     }
+        // })
+
+        // Alpine.data('counter', () => ({
+        //     count: 0,
+        //     get message() {
+        //         return `Count: ${this.count}`
+        //     }
+        // }))
+
+    })
+
+    let all_skills = [
+        'amateur squirrel skiing instructor'
+        , 'C#'
+        , 'Javascript'
+        , 'React'
+        , 'Typescript'
+        , 'NodeJS'
+        , 'Express'
+        , 'NextJS'
+        , 'Bootstrap'
+        , 'Golang'
+        , 'jQuery'
+    ]
+
+    let skill_prototype = {
+        name: "",
+        used_at: []
+    }
+
+    let company_prototype = {
+        name: "Hoya"
+    }
+
+    const styles = {
+        stack: (gap_size = 1) => `flex flex-col items-center justify-center gap-${gap_size}`,
+        row: (gap_size = 1) => `flex flex-row items-center justify-center gap-${gap_size}`,
+    }
+
+    const markdown_placeholder = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus libero unde dolorem ipsam quibusdam? Perspiciatis voluptates dignissimos libero. Possimus explicabo alias sed cum voluptatum. Adipisci a repudiandae quaerat vitae molestias!`
+
+    function setup() {
+        return {
+            message: "Have a Potato Day! 🥔",
+            get body_style() {
+                return `flex flex-col items-center justify-center border-2 border-red-100`;
+            }
+        };
+    }
+
+
+</script>
+
+</html>
