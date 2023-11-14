@@ -2,440 +2,604 @@
 <html data-theme="synthwave" lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nick Preston</title>
-  <script type="module" src="./main.js"></script>
+    <meta charset="UTF-8"/>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Nick Preston</title>
+    <script type="module" src="./main.js"></script>
 
-  <!-- <script type="module">
-
-    const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
-    const AIRTABLE_TOKEN = import.meta.env.VITE_AIRTABLE_TOKEN;
-    const max_records = 100;
-
-    const TableName = "Technologies";
-    const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TableName}?maxRecords=${max_records}&view=Grid%20view`;
-
-    // console.log("airtable_url :>> ", AIRTABLE_URL);
-    // console.log('AIRTABLE_TOKEN :>> ', AIRTABLE_TOKEN);
-
-    export async function get_all_tech_skills() {
-      const response = await fetch(AIRTABLE_URL, {
-        headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` },
-      });
-
-      return await response.json();
-    }
-
-    const technical_skills = await get_all_tech_skills();
-
-    console.log('technical_skills :>> ', technical_skills.records);
-    // window.get_all_tech_skills = get_all_tech_skills;
-    // window.skills = technical_skills.records;
-
-    window.get_all_tech_skills = get_all_tech_skills;
-
-    console.log('get_all_tech_skills :>> ', get_all_tech_skills);
-  </script> -->
+    <!-- <script type="module">
+  
+      const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
+      const AIRTABLE_TOKEN = import.meta.env.VITE_AIRTABLE_TOKEN;
+      const max_records = 100;
+  
+      const TableName = "Technologies";
+      const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TableName}?maxRecords=${max_records}&view=Grid%20view`;
+  
+      // console.log("airtable_url :>> ", AIRTABLE_URL);
+      // console.log('AIRTABLE_TOKEN :>> ', AIRTABLE_TOKEN);
+  
+      export async function get_all_tech_skills() {
+        const response = await fetch(AIRTABLE_URL, {
+          headers: { Authorization: `Bearer ${AIRTABLE_TOKEN}` },
+        });
+  
+        return await response.json();
+      }
+  
+      const technical_skills = await get_all_tech_skills();
+  
+      console.log('technical_skills :>> ', technical_skills.records);
+      // window.get_all_tech_skills = get_all_tech_skills;
+      // window.skills = technical_skills.records;
+  
+      window.get_all_tech_skills = get_all_tech_skills;
+  
+      console.log('get_all_tech_skills :>> ', get_all_tech_skills);
+    </script> -->
 </head>
 
-<body class="" x-data="setup()">
+<body class="h-screen" x-data="setup()">
 
-  <!-- Debug panel -->
-  <!-- <template x-if="VITE_MODE === 'dev'">
-    <div>
-      <p>hellor there</p>
-      <span x-text="airtable_url"></span>
-    </div>
-  </template> -->
-
-
-  <!-- <span x-text="await get_skills()"></span> -->
+<!-- Debug panel -->
+<!-- <template x-if="VITE_MODE === 'dev'">
+  <div>
+    <p>hellor there</p>
+    <span x-text="airtable_url"></span>
+  </div>
+</template> -->
 
 
+<!-- <span x-text="await get_skills()"></span> -->
 
-  <label for="my-drawer" class="btn btn-primary drawer-button">Navigate</label>
 
-  <div class="drawer drawer-end">
+<label for="my-drawer" class="btn btn-primary drawer-button">Navigate</label>
+
+<div class="drawer drawer-end">
 
     <input id="my-drawer" type="checkbox" x-model="drawer_is_active" :checked="drawer_is_active"
-      class="drawer-toggle" />
+           class="drawer-toggle"/>
     <div class="drawer-content max-h-none flex flex-col items-center h-screen">
-      <!-- Page content here -->
-      <section class="{ 'active': active_page === 0 }" x-show.transition.in.opacity.duration.600="active_page === 0">
+        <!-- Page content here -->
+        <section class="{ 'active': active_page === 0 }" x-show.transition.in.opacity.duration.600="active_page === 0">
 
-        <!-- HOME -->
-        <div class="hero bg-base-200">
-          <div class="flex-col hero-content lg:flex-row">
-            <div class="avatar">
-              <div class="w-24 rounded-full lg:w-48 ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="./img/portfolio_pic.jpg" />
-              </div>
-            </div>
-            <article class="prose prose-stone lg:prose-xl">
-              <h1 class="text-5xl font-bold">Hello, there! ;D</h1>
-              <p class="py-6 elevator-pitch">
-                I'm Nicholas Preston, a .NET Engineer with a fondness for
-                optimizing Web stacks to modern Full Stack
-                Development standards, whether it's ASP.NET Core, Databases or a popular
-                Javascript Framework like React or Vue, I've got the skills and the know-how to make your projects run
-                as if they were
-                brand new!
-              </p>
-              <br />
-              <aside class="italic text-tiny">
-                I'm also a big C# nerd and big fan of Nick Chapsas and the
-                legendary John Skeet!
-              </aside>
-
-            </article>
-          </div>
-        </div>
-
-      </section>
-
-      <section class="{ 'active': active_page === 1 }" x-show.transition.in.opacity.duration.600="active_page === 1">
-        <!-- SKILLZ -->
-
-        <div x-show="true" class="flex flex-col items-center justify-center gap-4">
-          <article class="prose lg:prose-xl">
-            <h1>10 Years of Learning</h1>
-
-            <p>
-              I've enjoyed working with many
-              software development teams, all different from one another, learning from each one valuable lessons which
-              have followed me throughout my career and have proved invaluable to those had the pleasure of working
-              with.
-            </p>
-
-            <p>
-              I've red a good bit of code and written even more both for
-              professional work and for fun! From working with in .NET Framework and ASP.NET Core to using Golang with
-              ReactJS, I've used at least a few tech stacks, whether widely known or more unconventional to better suit
-              my client's needs.
-            </p>
-
-
-            <aside>
-              <i>
-
-                (Not your typical .NET Engineer, here are the tech skills
-                I've aquired over the years in my bid to become America's next top
-                Full Stack Developer... ;P)
-
-              </i>
-            </aside>
-
-          </article>
-
-          <section class="w-full flex flex-col gap-4">
-
-            <!-- SKILLs SECTION (AIRTABLE IFRAME) -->
-
-
-            <div class="hero-content flex-col lg:flex-col">
-              <h1 class="text-5xl font-bold">Technical Skills</h1>
-              <p class="w-1/2 font-bold text-md text-accent">These are Technologies I've worked with, ranked by
-                Proficiency</p>
-
-            </div>
-
-            <div x-data="{skills: [{Name: 'One'}]}" x-init="skills = get_tech_skills()">
-
-              <div class="hero min-h-screen flex flex-row bg-base-200">
-
-
-                <div class="card-body w-full">
-
-                  <template x-if="frames.tech.show">
-
-                    <iframe class="airtable-embed"
-                      src="https://airtable.com/embed/shrNcUcZM4U7sucw6?backgroundColor=green&viewControls=on"
-                      frameborder="0" onmousewheel="" width="100%" height="533"
-                      style="background: transparent; border: 1px solid #ccc;"></iframe>
-                  </template>
-
-                  <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                    <template x-for="{id, fields} in skills">
-                      <div class="card border-2 border-blue-500">
-
-                        <h1 x-text="id">...</h1>
-                        <h1 x-text="fields?.Name">...</h1>
-
-                        <figure>
-                          <img class="" :src="fields?.Media[0]?.url" :alt="fields?.Media[0]?.filename" />
-                          <!-- <img class="" :src="skill.icon_path" :alt="skill.Name" /> OLD -->
-                        </figure>
-
-                        <div class="card-body">
-                          <h2 class="card-title" x-text="fields?.Name"></h2>
-                          <p x-text="fields?.Experiences">...</p>
-                          <div class="card-actions justify-end">
-
-                            <label class="label label-accent text-md text-secondary">Confidence</label>
-                            <span x-text=" fields['Self-Rating']"></span>
-
-                            <progress class="progress progress-secondary w-56 bg-error " :value="fields['Self-Rating']"
-                              max="5"></progress>
-
-                            <button x-show="fields.url" class="btn btn-primary">More Info</button>
-
-                          </div>
+            <!-- HOME -->
+            <div class="hero bg-base-200">
+                <div class="flex-col hero-content lg:flex-row">
+                    <div class="avatar">
+                        <div class="w-24 rounded-full lg:w-48 ring ring-primary ring-offset-base-100 ring-offset-2">
+                            <img src="./img/portfolio_pic.jpg"/>
                         </div>
-                      </div>
+                    </div>
+                    <article class="prose prose-stone lg:prose-xl">
+                        <h1 class="text-5xl font-bold">Hello, there! ;D</h1>
+                        <p class="py-6 elevator-pitch">
+                            I'm Nicholas Preston, a .NET Engineer with a fondness for
+                            optimizing Web stacks to modern Full Stack
+                            Development standards, whether it's ASP.NET Core, Databases or a popular
+                            Javascript Framework like React or Vue, I've got the skills and the know-how to make your
+                            projects run
+                            as if they were
+                            brand new!
+                        </p>
+                        <br/>
+                        <aside class="italic text-tiny">
+                            I'm also a big C# nerd and big fan of Nick Chapsas and the
+                            legendary John Skeet!
+                        </aside>
 
-                    </template>
-                  </div>
-
+                    </article>
                 </div>
-              </div>
+            </div>
+
+        </section>
+
+        <section class="{ 'active': active_page === 1 }" x-show.transition.in.opacity.duration.600="active_page === 1">
+            <!-- SKILLZ -->
+
+            <div x-show="true" class="flex flex-col items-center justify-center gap-4">
+                <article class="prose lg:prose-xl">
+                    <h1>10 Years of C#</h1>
+
+                    <p>
+                        I've enjoyed working with many
+                        software development teams, all different from one another, learning from each one valuable
+                        lessons which
+                        have followed me throughout my career and have proved invaluable to those had the pleasure of
+                        working
+                        with.
+                    </p>
+
+                    <p>
+                        I've red a good bit of code and written even more both for
+                        professional work and for fun! From working with in .NET Framework and ASP.NET Core to using
+                        Golang with
+                        ReactJS, I've used at least a few tech stacks, whether widely known or more unconventional to
+                        better suit
+                        my client's needs.
+                    </p>
 
 
+                    <aside>
+                        <i>
 
-              <!-- TODO: Finish soft skills -->
+                            (Not your typical .NET Engineer, here are the tech skills
+                            I've aquired over the years in my bid to become America's next top
+                            Full Stack Developer... ;P)
 
-              <template x-if="sections.soft_skills.show">
-                <div>
+                        </i>
+                    </aside>
 
-                  <div class="hero min-h-screen flex flex-row-reverse bg-base-200">
+                </article>
+
+                <section class="w-full flex flex-col gap-4">
+
+                    <!-- SKILLs SECTION (AIRTABLE IFRAME) -->
+
+
                     <div class="hero-content flex-col lg:flex-col">
-                      <h1 class="text-5xl font-bold">Soft Skills</h1>
-                      <p class="w-1/2 font-bold text-md text-accent">These are Soft Skills I've been working on that I
-                        feel
-                        are useful to any company!</p>
+                        <h1 class="text-5xl font-bold">Technical Skills</h1>
+                        <p class="w-1/2 font-bold text-md text-accent">These are Technologies I've worked with, ranked
+                            by
+                            Proficiency</p>
 
                     </div>
 
-                    <div class="card-body w-full">
+                    <div x-data="{skills: [{Name: 'One'}]}" x-init="skills = get_tech_skills()">
 
-                      <template x-if="frames.soft.show">
+                        <div class="hero min-h-screen flex flex-row bg-base-200">
 
-                        <iframe class="airtable-embed"
-                          src="https://airtable.com/embed/shrFpYAqYFdNtZt84?backgroundColor=green&viewControls=on"
-                          frameborder="0" onmousewheel="" width="100%" height="533"
-                          style="background: transparent; border: 1px solid #ccc;"></iframe>
-                      </template>
+
+                            <div class="card-body w-full">
+
+                                <template x-if="frames.tech.show">
+
+                                    <iframe class="airtable-embed"
+                                            src="https://airtable.com/embed/shrNcUcZM4U7sucw6?backgroundColor=green&viewControls=on"
+                                            frameborder="0" onmousewheel="" width="100%" height="533"
+                                            style="background: transparent; border: 1px solid #ccc;"></iframe>
+                                </template>
+
+                                <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                                    <template x-for="{id, fields} in skills">
+                                        <div class="card border-2 border-blue-500">
+
+                                            <h1 x-text="id">...</h1>
+                                            <h1 x-text="fields?.Name">...</h1>
+
+                                            <figure>
+                                                <img class="" :src="fields?.Media[0]?.url"
+                                                     :alt="fields?.Media[0]?.filename"/>
+                                                <!-- <img class="" :src="skill.icon_path" :alt="skill.Name" /> OLD -->
+                                            </figure>
+
+                                            <div class="card-body">
+                                                <h2 class="card-title" x-text="fields?.Name"></h2>
+                                                <p x-text="fields?.Experiences">...</p>
+                                                <div class="card-actions justify-end">
+
+                                                    <label class="label label-accent text-md text-secondary">Confidence</label>
+                                                    <span x-text=" fields['Self-Rating']"></span>
+
+                                                    <progress class="progress progress-secondary w-56 bg-error "
+                                                              :value="fields['Self-Rating']"
+                                                              max="5"></progress>
+
+                                                    <button x-show="fields.url" class="btn btn-primary">More Info
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </template>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <!-- TODO: Finish soft skills -->
+
+                        <template x-if="sections.soft_skills.show">
+                            <div>
+
+                                <div class="hero min-h-screen flex flex-row-reverse bg-base-200">
+                                    <div class="hero-content flex-col lg:flex-col">
+                                        <h1 class="text-5xl font-bold">Soft Skills</h1>
+                                        <p class="w-1/2 font-bold text-md text-accent">These are Soft Skills I've been
+                                            working on that I
+                                            feel
+                                            are useful to any company!</p>
+
+                                    </div>
+
+                                    <div class="card-body w-full">
+
+                                        <template x-if="frames.soft.show">
+
+                                            <iframe class="airtable-embed"
+                                                    src="https://airtable.com/embed/shrFpYAqYFdNtZt84?backgroundColor=green&viewControls=on"
+                                                    frameborder="0" onmousewheel="" width="100%" height="533"
+                                                    style="background: transparent; border: 1px solid #ccc;"></iframe>
+                                        </template>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
 
                     </div>
-                  </div>
-                </div>
-              </template>
 
 
+                </section>
             </div>
 
+        </section>
 
-          </section>
-        </div>
-
-      </section>
-
-      <!-- PROJECTS -->
-
-      <section class="{ 'active': active_page === 2 }" x-show.transition.in.opacity.duration.600="active_page === 2">
-
-        <div x-show="true" class="flex flex-col items-center justify-center gap-4">
-          <article class="prose lg:prose-xl">
-            <h1>Projects</h1>
-          </article>
-
-          <section class="w-full flex flex-col gap-4">
-
-            <!-- Projects SECTION (AIRTABLE IFRAME) -->
-
-            <div class="hero min-h-screen flex flex-row bg-base-200">
-              <div class="hero-content flex-col lg:flex-col">
-                <h1 class="text-5xl font-bold">All Projects</h1>
-                <p class="w-1/2 font-bold text-md text-accent">These are projects I've worked on</p>
-              </div>
-
-              <div class="card-body w-full">
-                <template x-if="frames.projects.show">
-                  <iframe class="airtable-embed"
-                    src="https://airtable.com/embed/shrLtqnXzMV46XOMd?backgroundColor=green&viewControls=on"
-                    frameborder="0" onmousewheel="" width="100%" height="533"
-                    style="background: transparent; border: 1px solid #ccc;"></iframe>
-                </template>
-              </div>
-            </div>
-
-
-          </section>
-        </div>
-
-      </section>
-
-
-
-      <!-- OLD PROJECTs from JS file implementation -->
-      <template x-if="false">
+        <!-- PROJECTS -->
 
         <section class="{ 'active': active_page === 2 }" x-show.transition.in.opacity.duration.600="active_page === 2">
 
+            <div x-show="true" class="flex flex-col items-center justify-center gap-4">
+                <article class="prose lg:prose-xl">
+                    <h1>Projects</h1>
+                </article>
 
-          <div class="hero min-h-screen flex flex-row bg-base-200">
-            <div class="hero-content flex-col lg:flex-col">
-              <h1 class="text-5xl font-bold">Projects</h1>
-              <p class="w-1/2 font-bold text-md text-accent">Teams and Projects I've worked on</p>
+                <section class="w-full flex flex-col gap-4">
 
+                    <!-- Projects SECTION (AIRTABLE IFRAME) -->
+
+                    <div class="hero min-h-screen flex flex-row bg-base-200">
+                        <div class="hero-content flex-col lg:flex-col">
+                            <h1 class="text-5xl font-bold">All Projects</h1>
+                            <p class="w-1/2 font-bold text-md text-accent">These are projects I've worked on</p>
+                        </div>
+
+                        <div class="card-body w-full">
+                            <template x-if="frames.projects.show">
+                                <iframe class="airtable-embed"
+                                        src="https://airtable.com/embed/shrLtqnXzMV46XOMd?backgroundColor=green&viewControls=on"
+                                        frameborder="0" onmousewheel="" width="100%" height="533"
+                                        style="background: transparent; border: 1px solid #ccc;"></iframe>
+                            </template>
+                        </div>
+                    </div>
+
+
+                </section>
             </div>
 
-            <div class="card-body w-min-2xl max-w-none">
+        </section>
 
 
-            </div>
-          </div>
+        <!-- OLD PROJECTs from JS file implementation -->
+        <template x-if="false">
+
+            <section class="{ 'active': active_page === 2 }"
+                     x-show.transition.in.opacity.duration.600="active_page === 2">
 
 
-          <div class="flex flex-col items-center justify-center">
+                <div class="hero min-h-screen flex flex-row bg-base-200">
+                    <div class="hero-content flex-col lg:flex-col">
+                        <h1 class="text-5xl font-bold">Projects</h1>
+                        <p class="w-1/2 font-bold text-md text-accent">Teams and Projects I've worked on</p>
 
-            <section x-show="true">
-              <div class="flex flex-col items-center justify-center">
-                <template x-for="project in projects" :key="project.name">
+                    </div>
 
-                  <span x-text="project.Name"></span>
+                    <div class="card-body w-min-2xl max-w-none">
 
 
+                    </div>
+                </div>
 
-                  <div class="shadow-xl card max-w-sm bg-base-100 image-full">
-                    <figure>
-                      <img :src="project.url" alt="Project" />
-                    </figure>
-                    <div class="card-body">
-                      <h2 x-text="project.name" class="card-title"></h2>
-                      <div class="">
 
-                        <p class="" x-text="project.description"></p>
-                      </div>
-                      <div class="border-2 mockup-code bg-primary text-secondary border-primary">
-                        <template x-for="line in project.code" :key="line">
+                <div class="flex flex-col items-center justify-center">
+
+                    <section x-show="true">
+                        <div class="flex flex-col items-center justify-center">
+                            <template x-for="project in projects" :key="project.name">
+
+                                <span x-text="project.Name"></span>
+
+
+                                <div class="shadow-xl card max-w-sm bg-base-100 image-full">
+                                    <figure>
+                                        <img :src="project.url" alt="Project"/>
+                                    </figure>
+                                    <div class="card-body">
+                                        <h2 x-text="project.name" class="card-title"></h2>
+                                        <div class="">
+
+                                            <p class="" x-text="project.description"></p>
+                                        </div>
+                                        <div class="border-2 mockup-code bg-primary text-secondary border-primary">
+                                            <template x-for="line in project.code" :key="line">
                           <pre class="max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-primary"
-                            :value="project.code">
+                               :value="project.code">
                           <code class="text-info" x-text="line">
                           </code>
                         </pre>
-                        </template>
-                      </div>
-                      <div class="justify-end card-actions">
-                        <!-- <button class="btn btn-primary">Buy Now</button> -->
-                      </div>
-                    </div>
-                  </div>
-                </template>
-              </div>
+                                            </template>
+                                        </div>
+                                        <div class="justify-end card-actions">
+                                            <!-- <button class="btn btn-primary">Buy Now</button> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </section>
+
+                </div>
             </section>
-
-          </div>
-        </section>
-      </template>
-
-
-      <!-- RESUME -->
-      <section name="resume" class="{ 'h-screen active': active_page === 3}"
-        x-show.transition.in.opacity.duration.600="active_page === 3">
-
-        <template x-if="show_bold_resume">
-          <div>
-
-            <div class="h-screen">
-
-              <div class="aspect-auto">
-                <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0" frameborder="no"
-                  scrolling="no" class="" id="child-iframe">
-                </iframe>
-
-                <a href="https://bold.pro/my/nicholas-preston-221105215517">
-                  <div class="alert alert-success">View my full Resume here!</div>
-                </a>
-              </div>
-
-            </div>
-
-
-          </div>
         </template>
 
 
-      </section>
+        <!-- RESUME -->
+        <section name="resume" class="{ 'h-screen active': active_page === 3}"
+                 x-show.transition.in.opacity.duration.600="active_page === 3">
+
+            <template x-if="show_bold_resume">
+                <div>
+
+                    <div class="h-screen">
+
+                        <div class="aspect-auto">
+                            <iframe src="https://bold.pro/my/nicholas-preston-221105215517" framespacing="0"
+                                    frameborder="no"
+                                    scrolling="no" class="" id="child-iframe">
+                            </iframe>
+
+                            <a href="https://bold.pro/my/nicholas-preston-221105215517">
+                                <div class="alert alert-success">View my full Resume here!</div>
+                            </a>
+                        </div>
+
+                    </div>
 
 
-      <section x-show="false" class="{ 'h-screen active': active_page === 4}"
-        x-show.transition.in.opacity.duration.600="active_page === 4">
-        <h1>Sandbox </h1>
+                </div>
+            </template>
 
-        <div class="grid lg:grid-cols-3 grid-cols-2 gap-2">
 
-          <template x-for="i in 20">
-            <div
-              class="box w-12 h-12 border-4 border-ocean-500 bg-tahiti-300 text-tahiti-600 items-center justify-center flex">
-              <p x-text="i"></p>
+        </section>
+
+
+        <section x-show="false" class="{ 'h-screen active': active_page === 4}"
+                 x-show.transition.in.opacity.duration.600="active_page === 4">
+            <h1>Sandbox </h1>
+
+            <div class="grid lg:grid-cols-3 grid-cols-2 gap-2">
+
+                <template x-for="i in 20">
+                    <div
+                            class="box w-12 h-12 border-4 border-ocean-500 bg-tahiti-300 text-tahiti-600 items-center justify-center flex">
+                        <p x-text="i"></p>
+                    </div>
+
+                </template>
             </div>
 
-          </template>
-        </div>
-
-      </section>
+        </section>
 
     </div>
     <div class="drawer-side">
-      <label for="my-drawer" class="drawer-overlay"></label>
-      <ul class="menu p-4 w-80 bg-base-100 text-base-content">
-        <!-- Sidebar content here -->
-        <li x-on:click="change_to_page(0)"><a>Home</a></li>
-        <li x-on:click="change_to_page(1)"><a>Skills</a></li>
-        <li x-on:click="change_to_page(2)"><a>Projects</a></li>
-        <li x-on:click="change_to_page(3)"><a>Resume</a></li>
-        <li x-show="false" x-on:click="change_to_page(4)"><a>Sandbox</a></li>
+        <label for="my-drawer" class="drawer-overlay"></label>
+        <ul class="menu p-4 w-80 bg-base-100 text-base-content">
+            <!-- Sidebar content here -->
+            <li x-on:click="change_to_page(0)"><a>Home</a></li>
+            <li x-on:click="change_to_page(1)"><a>Skills</a></li>
+            <li x-on:click="change_to_page(2)"><a>Projects</a></li>
+            <li x-on:click="change_to_page(3)"><a>Resume</a></li>
+            <li x-show="false" x-on:click="change_to_page(4)"><a>Sandbox</a></li>
 
-      </ul>
+        </ul>
     </div>
-  </div>
+</div>
 
 
 </body>
 
-<footer class="p-10 footer bg-neutral text-neutral-content">
-  <div>
+<template x-if="false">
 
-    <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
-      clip-rule="evenodd" class="fill-current">
+    <footer
+            class="p-10 footer bg-neutral text-neutral-content">
+        <div>
+
+            <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                 clip-rule="evenodd" class="fill-current">
+                <path
+                        d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z">
+                </path>
+            </svg>
+            <p x-show="false">
+                ACME Industries Ltd. <br/>Providing reliable tech since 2014
+            </p>
+
+            <p>
+                Powered By: <br/>
+                <svg src="https://vitejs.dev/logo-with-shadow.png"></svg>
+            </p>
+        </div>
+        <div>
+            <span class="footer-title">Social</span>
+            <div class="grid grid-flow-col gap-4">
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         class="fill-current">
+                        <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
+                        </path>
+                    </svg>
+                </a>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         class="fill-current">
+                        <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
+                        </path>
+                    </svg>
+                </a>
+                <a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         class="fill-current">
+                        <path
+                                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
+                        </path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</template>
 
 
-      <path
-        d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z">
-      </path>
-    </svg>
-    <p x-show="false">
-      ACME Industries Ltd. <br />Providing reliable tech since 2014
-    </p>
+<script type="module">
+    import anime from 'animejs/lib/anime.es.js';
+    // console.log('anime', anime)
+    var boxes = document.querySelectorAll('.box')
+    var tech_cards = document.querySelectorAll('.card')
 
-    <p>
-      Powered By: <br />
-      <svg src="https://vitejs.dev/logo-with-shadow.png"></svg>
-    </p>
-  </div>
-  <div>
-    <span class="footer-title">Social</span>
-    <div class="grid grid-flow-col gap-4">
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path
-            d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z">
-          </path>
-        </svg></a>
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path
-            d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z">
-          </path>
-        </svg></a>
-      <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current">
-          <path
-            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z">
-          </path>
-        </svg></a>
-    </div>
-  </div>
-</footer>
+    anime({
+        targets: boxes,
+        // translateX: -150,
+        // translateY: 150,
+
+        keyframes: [
+            {translateY: -40},
+            {translateX: 250},
+            {translateY: 40},
+            {translateX: 0},
+            {translateY: 0}
+        ],
+        scale: [
+            {value: .1, easing: 'easeOutSine', duration: 500},
+
+            {value: 1, easing: 'easeInOutQuad', duration: 1200},
+        ],
+        delay: anime.stagger(200, {grid: [14, 5], from: 'center'}),
+        rotate: '1turn'
+    });
+
+    anime({
+        targets: tech_cards,
+        keyframes: [],
+        scale: [
+            {value: .1, easing: 'easeOutSine', duration: 500},
+
+            {value: 1, easing: 'easeInOutQuad', duration: 1200},
+        ],
+        delay: anime.stagger(200, {grid: [14, 5], from: 'center'}),
+    })
+
+</script>
+
+
+<script>
+
+    // let skills = []
+    async function get_tech_skills() {
+        // console.log('helloooo skills!');
+
+        let res = await get_all_tech_skills();
+        console.log('records :>> ', res.records);
+        // skills = res.records;
+        return res.records;
+        // console.log('window.skills :>> ', window.skills);
+    }
+
+    // const res = await get_all_tech_skills();
+    // console.log('res :>> ', res);
+
+
+    function setup() {
+
+        // console.log('mah projects', projects);
+        // console.log("mah skills", skills);
+
+        // console.log('window.skills :>> ', window.skills);
+        // console.log('window :>> ', window);
+
+        const previous_page = parseInt(localStorage.getItem('previous_page'))
+
+        return {
+            message: "",
+            open: false,
+            progress: "--value: 70",
+            // skills: [],
+            active_page: previous_page || 0,
+            drawer_is_active: false,
+            show_bold_resume: false,
+
+            frames: {
+                tech: {
+                    show: false
+                },
+                soft: {
+                    show: false
+                },
+                projects: {show: false}
+            },
+
+            sections: {
+                soft_skills: {
+                    show: false
+                },
+            },
+
+            toggle_drawer() {
+                this.drawer_is_active = false;
+            },
+
+            change_to_page(page_number = 0) {
+                // console.log('changing to page... ' + page_number)
+                this.active_page = page_number;
+                localStorage.setItem('previous_page', this.active_page)
+                this.toggle_drawer();
+            },
+
+            is_current_page(page_name = 'home') {
+                // console.log('name=' + page_name)
+                let next_index = this.routes[page_name]
+                change_to_page(next_index);
+            }
+        };
+    }
+</script>
+<script>
+    window.addEventListener("load", function () {
+        let message = {
+            height: document.body.scrollHeight,
+            width: document.body.scrollWidth,
+        };
+
+        // window.top refers to parent window
+        window.top.postMessage(message, "*");
+    });
+</script>
+
+<script>
+    let iframe = document.querySelector("#child-iframe");
+
+    window.addEventListener(
+        "message",
+        function (e) {
+            if (!iframe || !e) return;
+            // message that was passed from iframe page
+            let message = e.data;
+
+            iframe.style.height = message.height + "px";
+            iframe.style.width = message.width + "px";
+        },
+        false
+    );
+</script>
+
+
 <!-- 
 <script type="module">
 
@@ -448,148 +612,5 @@
   console.log("window.skills :>> ", window.skills);
 
 </script> -->
-
-<script type="module">
-  import anime from 'animejs/lib/anime.es.js';
-  // console.log('anime', anime)
-  var boxes = document.querySelectorAll('.box')
-  var tech_cards = document.querySelectorAll('.card')
-
-  anime({
-    targets: boxes,
-    // translateX: -150,
-    // translateY: 150,
-
-    keyframes: [
-      { translateY: -40 },
-      { translateX: 250 },
-      { translateY: 40 },
-      { translateX: 0 },
-      { translateY: 0 }
-    ],
-    scale: [
-      { value: .1, easing: 'easeOutSine', duration: 500 },
-
-      { value: 1, easing: 'easeInOutQuad', duration: 1200 },
-    ],
-    delay: anime.stagger(200, { grid: [14, 5], from: 'center' }),
-    rotate: '1turn'
-  });
-
-  anime({
-    targets: tech_cards,
-    keyframes: [],
-    scale: [
-      { value: .1, easing: 'easeOutSine', duration: 500 },
-
-      { value: 1, easing: 'easeInOutQuad', duration: 1200 },
-    ],
-    delay: anime.stagger(200, { grid: [14, 5], from: 'center' }),
-  })
-
-</script>
-
-
-
-
-<script>
-
-  // let skills = []
-  async function get_tech_skills() {
-    // console.log('helloooo skills!');
-
-    let res = await get_all_tech_skills();
-    console.log('records :>> ', res.records);
-    // skills = res.records;
-    return res.records;
-    // console.log('window.skills :>> ', window.skills);
-  }
-
-  // const res = await get_all_tech_skills();
-  // console.log('res :>> ', res);
-
-
-  function setup() {
-
-    // console.log('mah projects', projects);
-    // console.log("mah skills", skills);
-
-    // console.log('window.skills :>> ', window.skills);
-    // console.log('window :>> ', window);
-
-    const previous_page = parseInt(localStorage.getItem('previous_page'))
-
-    return {
-      message: "",
-      open: false,
-      progress: "--value: 70",
-      // skills: [],
-      active_page: previous_page || 0,
-      drawer_is_active: false,
-      show_bold_resume: false,
-
-      frames: {
-        tech: {
-          show: false
-        },
-        soft: {
-          show: false
-        },
-        projects: { show: false }
-      },
-
-      sections: {
-        soft_skills: {
-          show: false
-        },
-      },
-
-      toggle_drawer() {
-        this.drawer_is_active = false;
-      },
-
-      change_to_page(page_number = 0) {
-        // console.log('changing to page... ' + page_number)
-        this.active_page = page_number;
-        localStorage.setItem('previous_page', this.active_page)
-        this.toggle_drawer();
-      },
-
-      is_current_page(page_name = 'home') {
-        // console.log('name=' + page_name)
-        let next_index = this.routes[page_name]
-        change_to_page(next_index);
-      }
-    };
-  }
-</script>
-<script>
-  window.addEventListener("load", function () {
-    let message = {
-      height: document.body.scrollHeight,
-      width: document.body.scrollWidth,
-    };
-
-    // window.top refers to parent window
-    window.top.postMessage(message, "*");
-  });
-</script>
-
-<script>
-  let iframe = document.querySelector("#child-iframe");
-
-  window.addEventListener(
-    "message",
-    function (e) {
-      if (!iframe || !e) return;
-      // message that was passed from iframe page
-      let message = e.data;
-
-      iframe.style.height = message.height + "px";
-      iframe.style.width = message.width + "px";
-    },
-    false
-  );
-</script>
 
 </html>
