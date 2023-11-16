@@ -2,23 +2,24 @@ const AIRTABLE_BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
 const AIRTABLE_TOKEN = import.meta.env.VITE_AIRTABLE_TOKEN;
 const max_records = 100;
 
-const debug_mode = true;
+const dev_mode = import.meta.env.VITE_MODE === 'dev';
 
-debug_mode && console.log('base id :>> ', AIRTABLE_BASE_ID)
-
+dev_mode && console.log('base id :>> ', AIRTABLE_BASE_ID)
 
 const TableName = "Technologies";
 const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${TableName}?maxRecords=${max_records}&view=Grid%20view`;
 
-// console.log("airtable_url :>> ", AIRTABLE_URL);
-// console.log('AIRTABLE_TOKEN :>> ', AIRTABLE_TOKEN);
+dev_mode && console.log("airtable_url :>> ", AIRTABLE_URL);
+dev_mode && console.log('AIRTABLE_TOKEN :>> ', AIRTABLE_TOKEN);
 
 export async function get_all_tech_skills() {
     const response = await fetch(AIRTABLE_URL, {
         headers: {Authorization: `Bearer ${AIRTABLE_TOKEN}`},
     });
 
-    return await response.json();
+    var tech_skills = await response.json();
+    dev_mode && console.log('tech skills :>> ', tech_skills)
+    return tech_skills;
 }
 
 // const technical_skills = await get_all_tech_skills();
